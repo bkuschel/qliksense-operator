@@ -22,13 +22,23 @@ func main() {
 }
 
 func processInLocalFileSystem(cr *config.CRConfig) {
+
+	// process cr.storageClassName
+	if cr.StorageClassName != "" {
+		qust.ProcessStorageClassName(cr)
+		c := config.Config{
+			DataKey: "storageClassName",
+			Values: map[string]string{
+				"qliksense": cr.StorageClassName,
+			},
+		}
+		cr.Configs = append(cr.Configs, c)
+	}
+
 	// Process cr.configs
 	qust.ProcessCrConfigs(cr)
 	// Process cr.secrets
 	qust.ProcessCrSecrets(cr)
-
-	// process cr.storageClassName
-	qust.ProcessStorageClassName(cr)
 
 	if cr.GenerateKeys {
 		err := qust.GenerateKeys(cr)
