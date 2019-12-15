@@ -17,6 +17,7 @@ type CRConfig struct {
 	RotateKeys       string   `json:"rotateKeys,omitempty" yaml:"rotateKeys,omitempty"`
 	StorageClassName string   `json:"storageClassName,omitempty" yaml:"storageClassName,omitempty"`
 	NameSpace        string   `json:"namespace,omitempty" yaml:"namespace,omitempty"`
+	DockerRegistry   string   `json:"dockerRegistry,omitempty" yaml:"dockerRegistry,omitempty"`
 }
 type Secret struct {
 	SecretKey string            `json:"secretKey" yaml:"secretKey"`
